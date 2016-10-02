@@ -5,11 +5,20 @@
     <button (click)="postTodo(title.value, body.value)">submit</button>
 </form>
 
+<div *ngIf="selecttodo">
+    <h2>詳細</h2>
+    <form>
+        <span>id: {{selecttodo.id}}</span> <br/>
+        <input [(ngModel)]="selecttodo.title" [ngModelOptions]="{standalone: true}" placeholder="title" /> <br/>
+        <input [(ngModel)]="selecttodo.body" [ngModelOptions]="{standalone: true}" placeholder="body" /> <br/>
+        <button (click)="updateTodo()">update</button>
+    </form>
+</div>
+
 <h2>一覧</h2>
 <ul>
-    <li *ngFor="let todo of todos"
-        (click)="onSelect(todo)">
-        {{todo.title}}
+    <li *ngFor="let todo of todos">
+        <span (click)="onSelect(todo)">{{todo.title}}</span>
         <button (click)="deleteTodo(todo)">x</button>
     </li>
 </ul>

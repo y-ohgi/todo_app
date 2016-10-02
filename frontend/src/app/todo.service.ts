@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/find';
 
 import { Todo } from './todo';
 
@@ -31,6 +32,29 @@ export class TodoService {
 
         //TODO: 例外処理
         return this.http.post(this.url, params, options).toPromise()
+            .then(res => res.json() as Todo);
+    }
+
+    // todo削除
+    deleteTodo(todo): Promise<any>{
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        
+        return this.http.delete(this.url+"/"+todo["id"] , options).toPromise();
+    }
+
+    // todo更新
+    updateTodo(todo): Promise<Todo>{
+        let params = JSON.stringify({
+            'todo': {
+                'title': todo['title'],
+                'body': todo['body']
+            }
+        });
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        
+        return this.http.put(this.url+"/"+todo["id"] , options).toPromise()
             .then(res => res.json() as Todo);
     }
 

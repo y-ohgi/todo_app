@@ -36,4 +36,17 @@ export class TodoComponent implements OnInit {
             .then((todo) => this.todos.push(todo));
     }
 
+    // todo削除
+    deleteTodo(todo){
+        this.todoService.deleteTodo(todo)
+            .then(()=>{
+                this.todos.splice(this.todos.indexOf(todo), 1);
+            });
+    }
+
+    // todo更新
+    updateTodo(){
+        this.todoService.updateTodo(this.selecttodo)
+            .then((todo) => this.todos[(this.todos.indexOf(todo))] = todo);
+    }
 }
