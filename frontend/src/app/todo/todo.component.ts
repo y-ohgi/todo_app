@@ -29,4 +29,11 @@ export class TodoComponent implements OnInit {
     fetchAll(){
         this.todoService.fetchAll().then((todos) => this.todos = todos);
     }
+
+    // todo追加
+    post(title: string, body: string){
+        this.todoService.post(title, body)
+            .then((todo) => this.todos.push(todo));
+    }
+    
 }
