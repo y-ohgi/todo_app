@@ -19,7 +19,7 @@ export class TodoService {
     }
 
     // todo追加
-    post(title: string, body: string): Promise<Todo>{
+    postTodo(title: string, body: string): Promise<Todo>{
         let params = JSON.stringify({
             'todo': {
                 'title': title,

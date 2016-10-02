@@ -1,15 +1,15 @@
-<h2>todo追加</h2>
+<h2>追加</h2>
 <form>
     <input #title placeholder="title" /> <br/>
     <input #body placeholder="body" /> <br/>
-    <button (click)="post(title.value, body.value)">submit</button>
+    <button (click)="postTodo(title.value, body.value)">submit</button>
 </form>
 
-<h2>todo一覧</h2>
+<h2>一覧</h2>
 <ul>
     <li *ngFor="let todo of todos"
         (click)="onSelect(todo)">
         {{todo.title}}
-        <button (click)="delete(todo)">x</button>
+        <button (click)="deleteTodo(todo)">x</button>
     </li>
 </ul>

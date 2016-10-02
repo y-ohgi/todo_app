@@ -31,9 +31,9 @@ export class TodoComponent implements OnInit {
     }
 
     // todo追加
-    post(title: string, body: string){
-        this.todoService.post(title, body)
+    postTodo(title: string, body: string){
+        this.todoService.postTodo(title, body)
             .then((todo) => this.todos.push(todo));
     }
-    
+
 }
