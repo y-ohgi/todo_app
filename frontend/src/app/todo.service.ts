@@ -54,7 +54,7 @@ export class TodoService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         
-        return this.http.put(this.url+"/"+todo["id"] , options).toPromise()
+        return this.http.put(this.url+"/"+todo["id"], params, options).toPromise()
             .then(res => res.json() as Todo);
     }
 
